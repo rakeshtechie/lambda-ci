@@ -1,22 +1,23 @@
 def bucket = 'deployment-packages-mlabouardy'
 def functionName = 'Fibonacci'
-def region = 'eu-west-3'
+def region = 'ap-south-1a'
 
 node('slaves'){
     stage('Checkout'){
         checkout scm
     }
 
-    stage('Test'){
-        sh 'go get -u github.com/golang/lint/golint'
-        sh 'go get -t ./...'
+    stage('build npm'){
+        sh 'npm install'
+        //sh 'go get -u github.com/golang/lint/golint'
+        //sh 'go get -t ./...'
         //sh 'golint -set_exit_status'
-        sh 'go vet .'
-        sh 'go test .'
+        //sh 'go vet .'
+        //sh 'go test .'
     }
 
     stage('Build'){
-        sh 'GOOS=linux go build -o main main.go'
+        //sh 'GOOS=linux go build -o main main.go'
         sh "zip ${commitID()}.zip main"
     }
 
