@@ -9,15 +9,9 @@ node('slaves'){
 
     stage('build npm'){
         sh 'npm install'
-        //sh 'go get -u github.com/golang/lint/golint'
-        //sh 'go get -t ./...'
-        //sh 'golint -set_exit_status'
-        //sh 'go vet .'
-        //sh 'go test .'
     }
 
     stage('Build'){
-        //sh 'GOOS=linux go build -o main main.go'
         sh "zip ${commitID()}.zip package.json node_modules index.js"
     }
 
