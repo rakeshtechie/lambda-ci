@@ -1,4 +1,4 @@
-def bucket = 'deployment-packages-mlabouardy'
+def bucket = 'deployment-packages-lambda-test'
 def functionName = 'Fibonacci'
 def region = 'ap-south-1a'
 
